@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>云盘</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+  <div id="wrapper">
+    <!-- 头部 -->
+    <div id="head" class="clearfix">
+      <!-- logo -->
+      <div id="logo">
+        <a href="javascript:;"></a>
+      </div>
+      <!-- 头像和设置 -->
+      <div id="user">
+        <a href="javascript:;"><i class="icon-head"></i></a>
+      </div> 
+    </div>
+    
+    <!-- 工具栏 -->
+    <div id="tool_bar" class="tool-view">
+      <!-- 工具栏左边 ： 全选 + 面包屑-->
+      <div class="nav-bar-left">
+        <div class="check checkAll">
+          <i class="icon icon-checkbox"></i>
+        </div>
+        <!-- 面包屑 -->
+        <div class="breadcrumb-container">
+          <ol id="breadcrumb">
+            <!-- <li><a href="#">全部</a></li>
+            <li>
+              <i class="icon-break-next"></i>
+              <a href="#">图库</a>
+            </li>
+            <li class="active">
+              <i class="icon-break-next"></i>
+              <a href="#">JavaScript入门基础</a>
+            </li> -->
+          </ol>
+        </div>
+      </div>
+      <!-- 工具栏右边：文件未选中，文件视图和排序 -->
+      <div class="nav-bar-right">
+        <div class="view-list noSelected show">
+          <div id="view_switch" class="view-item">
+            <a href="javascript:;" class="item-list"><i class="icon icon-list"></i></a>
+            <a href="javascript:;" class="item-list active"><i class="icon icon-thumb"></i></a>
+          </div>
+          <div id="rank_switch"  class="view-item">
+            <a href="javascript:;" class="item-list"><i class="icon icon-time"></i></a>
+            <a href="javascript:;" class="item-list active"><i class="icon icon-letter"></i></a>
+          </div>
+        </div>
+        <!-- 工具栏右边：文件选中，文件夹操作 -->
+        <div class="view-list selected-folder">
+          <a id="deleteFile" href="javascript:;" class="item-alter"><i class="icon icon-delete"></i><span>删除</span></a>
+          <a id="reName" href="javascript:;" class="item-alter">重命名</a>
+          <a id="moveTo" href="javascript:;" class="item-alter">移动到</a>
+        </div>
+        <!-- 工具栏右边：新建文件夹按钮 -->
+        <div id="newFolder">
+          <a href="javascript:;" class="add-folder"><i class="icon icon-add"></i><span>新建文件夹</span></a> 
+        </div>
+      </div>
+      
+    </div>
+    <div id="wrapper_wrapper" class="main-body">
+      <div class="thumbnail">
+        <div class="list-container">
+          <ul id="thumbnail" class="item-list clearfix">
+            <!-- <li class="item">
+              <a href="javascript:;">
+                <i class="icon-folder"></i>
+                <span class="folder-name">music</span>
+                <input type="text" class="folder-name-edit" value="" style="display: none;">
+              </a>
+              <i class="icon icon-checkbox"></i>
+            </li>
+            <li class="item">
+              <a href="javascript:;">
+                <i class="icon-folder"></i>
+                <span class="folder-name">电影</span>
+                <input type="text" class="folder-name-edit" value="" style="display: none;">
+              </a>
+              <i class="icon icon-checkbox"></i>
+            </li>
+            <li class="item">
+              <a href="javascript:;">
+                <i class="icon-folder"></i>
+                <span class="folder-name">图库</span>
+                <input type="text" class="folder-name-edit" value="" style="display: none;">
+              </a>
+              <i class="icon icon-checkbox"></i>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+      <div class="folder-list" style="display:none;">
+        <table id="list">
+            <thead>
+              <tr>
+                <th>&nbsp</th>
+                <th>名称</th>
+                <th>上次修改时间
+                  <!-- <i class="icon-arrow-down"></i> -->
+                </th>
+                <th>大小</th>
+              </tr>
+            </thead>
+            <tbody id="listInfo">
+              <!-- <tr>
+                <td>
+                  <div class="check">
+                    <i class="icon icon-checkbox"></i>
+                  </div>
+                </td>
+                <td>
+                  <div class="file-icon">
+                    <i class="icon-folder"></i>
+                  </div>
+                  <span class="folder-name">music</span>
+                </td>
+                <td>11月02日 11:26</td>
+                <td>200kb</td>
+              </tr>
+              <tr class="active">
+                <td>
+                  <div class="check">
+                    <i class="icon icon-checkbox"></i>
+                  </div>
+                </td>
+                <td>
+                  <div class="file-icon">
+                    <i class="icon-folder"></i>
+                  </div>
+                  <span class="folder-name">电影</span>
+                </td>
+                <td>11月02日 11:20</td>
+                <td>1.5G</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="check">
+                    <i class="icon icon-checkbox"></i>
+                  </div>
+                </td>
+                <td>
+                  <div class="file-icon">
+                    <i class="icon-folder"></i>
+                  </div>
+                  <span class="folder-name">图片</span>
+                  </td>
+                <td>11月02日 11:13</td>
+                <td>200M</td>
+              </tr> -->
+            </tbody>
+          </table>
+      </div>
+      <div class="empty-info" id="emptyInfo">
+        <span>暂时木有内容呀～～</span>
+      </div>
+      <div id="context_menu" class="right-menu">
+        <ul class="noSelected menu-list menu-list-out">
+          <li class="menu-item">
+            <span class="txt">刷新</span>
+          </li>
+          <li class="menu-item">
+            <i class="icon-trig"></i>
+            <span class="txt">视图</span>
+            <div class="mod-bubble-menu">
+              <ul class="menu-list">
+                <li class="menu-item">
+                  <i class="icon-sel"></i>
+                  <span class="txt">列表</span>
+                </li>
+                <li class="menu-item">
+                  <i class="icon-sel act"></i>
+                  <span class="txt">缩略图</span>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="menu-item">
+            <span class="txt">新建文件夹</span>
+          </li>
+        </ul>
+        <ul  class="selected menu-list" style="display:none;">
+          <li class="menu-item"><span class="txt">移动到</span></li>
+          <li class="menu-item"><span class="txt">重命名</span></li>
+          <li class="menu-item"><span class="txt">删除</span></li>
+        </ul>
+      </div>
+    </div>
+    <div id="modal">
+      <div class="modal-shadow"></div>
+      <!-- <div class="modal-dialog alert-dialog">
+         <div class="modal-dialog-hd clearfix">
+          <h4 class="modal-dialog-title">删除文件</h4>
+          <button class="icon btn-icon icon-modal-close"></button>
+        </div>
+        <div class="modal-dialog-bd clearfix">
+          <a href="javascript:;"><i class="icon icon-pop-info"></i></a>
+          <p class="title">确定要删除选中的文件？</p>
+          <p class="txt">已删除的文件可以在回收站找回</p>
+        </div>
+        <div class="modal-dialog-ft clearfix">
+          <button id="cancel"  class="btn">取消</button>
+          <button id="sure" class="btn active">确认</button>
+        </div> 
+      </div> -->
+      <!-- <div class="modal-dialog moveFile-dialog">
+        <div class="modal-dialog-hd clearfix">
+          <h4 class="modal-dialog-title">移动到</h4>
+          <button class="icon btn-icon icon-modal-close"></button>
+        </div>
+        <div class="modal-dialog-bd clearfix">
+          <div class="file-tree-container">
+            <ul class="treeview treeview-content">
+              <li>
+                <div class="treeview-node treeview-node-on open" style="padding-left:0;">
+                  <span class="treeview-node-handler">
+                    <i class="treeview-icon icon-file-open open"></i>
+                    <i class="treeview-icon icon-file"></i>
+                    <span class="treeview-txt" data-fileId="0">全部文件</span>
+                  </span>
+                </div>
+                <ul class="treeview treeview-root-content treeview-content">
+                  <li>
+                    <div class="treeview-node treeview-node-on open"  style="padding-left:15px;">
+                      <span class="treeview-node-handler">
+                        <i class="treeview-icon icon-file-open open"></i>
+                        <i class="treeview-icon icon-file"></i>
+                        <span class="treeview-txt" data-fileId="1">music</span>
+                      </span>
+                    </div>
+                    <ul class="treeview treeview-content treeview-content">
+                      
+                    </ul>
+                  </li>
+                   <li>
+                    <div class="treeview-node treeview-node-on"  style="padding-left:15px;">
+                      <span class="treeview-node-handler">
+                        <i class="treeview-icon icon-file-open"></i>
+                        <i class="treeview-icon icon-file"></i>
+                        <span class="treeview-txt" data-fileId="1">music</span>
+                      </span>
+                    </div>
+                    <ul class="treeview treeview-content treeview-content">
+                      
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="modal-dialog-ft clearfix">
+          <button id="cancel"  class="btn">取消</button>
+          <button id="sure" class="btn active">确认</button>
+        </div> 
+      </div> -->
+    </div>
+    <div id="message">
+      <span class="message-info" id="alertInfo">123456</span>
+    </div>
+  </div>
+</body>
+<script src="./js/data.js"></script>
+<script src="./js/component.js"></script>
+<script src="./js/createHTML.js"></script>
+<script src="./js/tools.js"></script>
+<script src="./js/index.js"></script>
+</html>
