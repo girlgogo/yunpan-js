@@ -173,7 +173,7 @@
 
   yp.listInfo.addEventListener("click", function (e) {
     let target = e.target;
-    if(target.classList.contains('name-text')) {
+    if(target.classList.contains('name-text') || target.classList.contains('icon-folder')) {
       let currentId = target.parentNode.parentNode.parentNode.fileId;
       if(db[currentId].type === 'folder') {
         yp.currentListId = currentId;
